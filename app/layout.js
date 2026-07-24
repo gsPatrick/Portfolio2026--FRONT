@@ -90,9 +90,13 @@ export const metadata = {
     apple: "/apple-icon",
   },
   manifest: "/manifest.webmanifest",
-  verification: process.env.NEXT_PUBLIC_GSC_VERIFICATION
-    ? { google: process.env.NEXT_PUBLIC_GSC_VERIFICATION }
-    : undefined,
+  // Verificação do Google Search Console (token público). Fixo no código para a
+  // meta tag estar sempre presente; pode ser sobrescrito por env se precisar.
+  verification: {
+    google:
+      process.env.NEXT_PUBLIC_GSC_VERIFICATION ||
+      "G9QhN9LFJf7rI9ka1T1ofnpAW1fZW04OJYVZubLz-9M",
+  },
   category: "technology",
 };
 
