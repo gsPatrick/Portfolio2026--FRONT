@@ -85,8 +85,8 @@
   width: 6px;
   height: 6px;
   border-radius: 50%;
-  background-color: var(--white);
-  box-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
+  background-color: #34d399;
+  box-shadow: 0 0 10px rgba(52, 211, 153, 0.7);
 }
 
 .list {

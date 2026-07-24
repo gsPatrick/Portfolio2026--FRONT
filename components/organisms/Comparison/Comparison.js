@@ -56,20 +56,20 @@ export default function Comparison() {
         <SectionHead
           layout="split"
           kicker="o diferencial"
-          title={"A diferença não está no código. Está no *processo*."}
-          lead="Cinco coisas quebram quase todo projeto freelance, e nenhuma delas é técnica: todas são de processo. À esquerda, o que costuma dar errado. À direita, como funciona comigo."
+          title={"O mercado de dev freelance\nestá *quebrado*."}
+          lead="Eu trabalho pelo oposto de cada ponto. Estes são os cinco que mais derrubam um projeto freelance. À esquerda, como costuma ser no mercado. À direita, como funciona comigo."
         />
 
         <div className={styles.board}>
           <div className={styles.columns} aria-hidden="true">
             <span />
             <span className={`${styles.colLabel} ${styles.colLabelLeft}`}>
-              Como costuma ser
+              O mercado
             </span>
             <span />
             <span className={`${styles.colLabel} ${styles.colLabelPanel}`}>
               <span className={styles.pip} />
-              Comigo
+              Como eu trabalho
             </span>
           </div>
 

@@ -97,14 +97,16 @@
   flex-shrink: 0;
 }
 
+/* Vermelho: problema do mercado (painel claro à esquerda) */
 .iconPain {
-  border: 1px solid var(--tone-line-strong);
-  color: var(--tone-faint);
+  background-color: rgba(225, 29, 72, 0.1);
+  color: #e11d48;
 }
 
+/* Verde: como eu trabalho (painel preto à direita) */
 .iconFix {
-  background-color: var(--white);
-  color: var(--black);
+  background-color: rgba(52, 211, 153, 0.16);
+  color: #34d399;
 }
 
 .painText {
