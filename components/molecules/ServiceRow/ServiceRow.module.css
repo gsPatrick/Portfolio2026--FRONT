@@ -1,0 +1,109 @@
+.row {
+  position: relative;
+  display: grid;
+  grid-template-columns: 56px minmax(0, 1fr) 56px;
+  align-items: start;
+  gap: clamp(16px, 2vw, 32px);
+  padding: clamp(28px, 3.4vw, 44px) clamp(16px, 2vw, 28px);
+  margin-inline: clamp(-28px, -2vw, -16px);
+  border-radius: clamp(18px, 2vw, 26px);
+  color: var(--tone-ink);
+  transition: background-color 450ms var(--ease-out),
+    color 450ms var(--ease-out);
+}
+
+.row::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: clamp(16px, 2vw, 28px);
+  right: clamp(16px, 2vw, 28px);
+  height: 1px;
+  background-color: var(--tone-line-strong);
+  transition: opacity 300ms var(--ease-out);
+}
+
+.row:hover {
+  background-color: var(--black);
+  color: var(--white);
+}
+
+.row:hover::before,
+.row:hover + .row::before {
+  opacity: 0;
+}
+
+.index {
+  padding-top: 6px;
+  font-family: var(--font-mono);
+  font-size: var(--text-micro);
+  font-variant-numeric: tabular-nums;
+  opacity: 0.45;
+}
+
+.body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-16);
+}
+
+.title {
+  font-size: clamp(24px, 2.6vw, 36px);
+  font-weight: 500;
+  line-height: 1.1;
+  letter-spacing: var(--tracking-title);
+  color: inherit;
+}
+
+.description {
+  max-width: 58ch;
+  font-size: var(--text-lead);
+  line-height: 1.55;
+  opacity: 0.62;
+  text-wrap: pretty;
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-8);
+  padding-top: var(--space-8);
+}
+
+.arrow {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  margin-top: 2px;
+  border: 1px solid currentColor;
+  border-radius: 50%;
+  opacity: 0.28;
+  transition: opacity 450ms var(--ease-out), transform 450ms var(--ease-out);
+}
+
+.row:hover .arrow {
+  opacity: 1;
+  transform: translateX(4px) rotate(-45deg);
+}
+
+@media (max-width: 720px) {
+  .row {
+    grid-template-columns: 34px minmax(0, 1fr);
+  }
+
+  .arrow {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .row,
+  .arrow {
+    transition: none;
+  }
+
+  .row:hover .arrow {
+    transform: none;
+  }
+}

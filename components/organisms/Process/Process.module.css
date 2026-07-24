@@ -1,0 +1,114 @@
+.section {
+  position: relative;
+  background-color: var(--black);
+}
+
+.section::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 240px;
+  background: linear-gradient(to bottom, var(--white), transparent);
+  opacity: 0.08;
+  pointer-events: none;
+}
+
+.track {
+  position: relative;
+  height: calc(100vh + 58vh * 6);
+}
+
+.sticky {
+  --progress: 0;
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+
+.inner {
+  --text-h2: clamp(26px, 3.2vh, 40px);
+  --text-lead: clamp(14px, 1.6vh, 17px);
+  display: flex;
+  flex-direction: column;
+  gap: clamp(20px, 3.4vh, 44px);
+  width: 100%;
+  max-width: var(--page-max);
+  margin: 0 auto;
+  padding: calc(var(--nav-h) + clamp(8px, 2vh, 28px)) var(--page-x)
+    clamp(24px, 4vh, 56px);
+}
+
+.panel {
+  display: grid;
+  grid-template-columns: minmax(0, 0.72fr) minmax(0, 1fr);
+  align-items: start;
+  gap: clamp(32px, 5vw, 80px);
+}
+
+.rail {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-24);
+}
+
+.progress {
+  position: relative;
+  height: 2px;
+  border-radius: 2px;
+  background-color: var(--line);
+  overflow: hidden;
+}
+
+.progressFill {
+  position: absolute;
+  inset: 0;
+  transform: scaleX(var(--progress));
+  transform-origin: left;
+  background: linear-gradient(
+    to right,
+    rgba(255, 255, 255, 0.4),
+    var(--white)
+  );
+}
+
+.stage {
+  position: relative;
+  min-height: clamp(300px, 52vh, 440px);
+}
+
+@media (max-width: 1024px) {
+  .track {
+    height: auto;
+  }
+
+  .sticky {
+    position: static;
+    height: auto;
+    display: block;
+  }
+
+  .inner {
+    padding-top: var(--section-y);
+    padding-bottom: var(--section-y);
+  }
+
+  .panel {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .rail {
+    display: none;
+  }
+
+  .stage {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-16);
+    min-height: 0;
+  }
+}

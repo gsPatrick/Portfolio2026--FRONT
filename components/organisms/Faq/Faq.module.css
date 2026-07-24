@@ -1,0 +1,60 @@
+.section {
+  --tone-ink: var(--black);
+  --tone-body: #2e2e2e;
+  --tone-muted: var(--gray);
+  --tone-faint: rgba(10, 10, 10, 0.42);
+  --tone-line: rgba(10, 10, 10, 0.1);
+  --tone-line-strong: rgba(10, 10, 10, 0.16);
+  position: relative;
+  background-color: var(--white);
+  color: var(--black);
+  padding: var(--section-y) 0;
+}
+
+.section::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 180px;
+  background: linear-gradient(to bottom, rgba(10, 10, 10, 0.06), transparent);
+  pointer-events: none;
+}
+
+.inner {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: minmax(0, 0.78fr) minmax(0, 1fr);
+  align-items: start;
+  gap: clamp(40px, 6vw, 96px);
+  max-width: var(--page-max);
+  margin: 0 auto;
+  padding: 0 var(--page-x);
+}
+
+.aside {
+  position: sticky;
+  top: calc(var(--nav-h) + 48px);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: clamp(28px, 3.4vw, 44px);
+}
+
+.list {
+  list-style: none;
+  border-bottom: 1px solid var(--tone-line);
+}
+
+@media (max-width: 900px) {
+  .inner {
+    grid-template-columns: minmax(0, 1fr);
+    gap: clamp(32px, 6vw, 56px);
+  }
+
+  .aside {
+    position: static;
+  }
+}

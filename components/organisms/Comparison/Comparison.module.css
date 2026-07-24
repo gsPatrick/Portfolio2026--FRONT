@@ -1,0 +1,104 @@
+.section {
+  --tone-ink: var(--black);
+  --tone-body: #2e2e2e;
+  --tone-muted: var(--gray);
+  --tone-faint: rgba(10, 10, 10, 0.42);
+  --tone-line: rgba(10, 10, 10, 0.1);
+  --tone-line-strong: rgba(10, 10, 10, 0.18);
+  position: relative;
+  background-color: var(--white);
+  color: var(--black);
+  padding: var(--section-y) 0;
+  overflow: hidden;
+}
+
+.section::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 200px;
+  background: linear-gradient(to bottom, rgba(10, 10, 10, 0.07), transparent);
+  pointer-events: none;
+}
+
+.inner {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(48px, 7vw, 88px);
+  max-width: var(--page-max);
+  margin: 0 auto;
+  padding: 0 var(--page-x);
+}
+
+.board {
+  --panel-cols: 38px minmax(0, 1fr) 52px minmax(0, 1fr);
+  --panel-gap: 0px;
+  --panel-pad-x: clamp(20px, 2.4vw, 34px);
+  --panel-radius: clamp(16px, 1.6vw, 22px);
+  --panel-bg: var(--black);
+  --panel-bg-hover: #171717;
+  --panel-ink: var(--white);
+  --panel-ink-dim: rgba(255, 255, 255, 0.55);
+  --left-line: var(--tone-line-strong);
+  --panel-line: rgba(255, 255, 255, 0.12);
+  --row-pad-y: clamp(20px, 2.2vw, 26px);
+  display: flex;
+  flex-direction: column;
+}
+
+.columns {
+  display: grid;
+  grid-template-columns: var(--panel-cols);
+  column-gap: var(--panel-gap);
+  align-items: end;
+}
+
+.colLabel {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 20px var(--panel-pad-x);
+  font-family: var(--font-mono);
+  font-size: clamp(13px, 1.2vw, 15px);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  border-radius: var(--panel-radius) var(--panel-radius) 0 0;
+}
+
+.colLabelLeft {
+  color: var(--tone-muted);
+  border: 1px solid var(--left-line);
+  border-bottom: none;
+}
+
+.colLabelPanel {
+  color: var(--panel-ink);
+  font-weight: 500;
+  background-color: var(--panel-bg);
+}
+
+.pip {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: var(--white);
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
+}
+
+.list {
+  list-style: none;
+}
+
+@media (max-width: 860px) {
+  .board {
+    --panel-cols: 32px minmax(0, 1fr);
+  }
+
+  .columns {
+    display: none;
+  }
+}

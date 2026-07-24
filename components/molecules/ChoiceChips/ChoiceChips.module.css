@@ -1,0 +1,50 @@
+.group {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  border: none;
+}
+
+.label {
+  padding: 0;
+  color: var(--ink-body);
+  font-family: var(--font-mono);
+  font-size: 13px;
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+}
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  height: 42px;
+  padding: 0 18px;
+  border: 1px solid rgba(255, 255, 255, 0.24);
+  border-radius: var(--radius-pill);
+  background-color: rgba(255, 255, 255, 0.04);
+  color: var(--ink);
+  font-size: var(--text-body);
+  letter-spacing: var(--tracking-body);
+  transition: background-color var(--dur-base) var(--ease-out),
+    border-color var(--dur-base) var(--ease-out),
+    color var(--dur-base) var(--ease-out);
+}
+
+.chip:not(.active):hover {
+  border-color: var(--line-focus);
+  color: var(--tone-ink);
+}
+
+.active {
+  background-color: var(--white);
+  border-color: var(--white);
+  color: var(--black);
+  font-weight: 500;
+  cursor: default;
+}

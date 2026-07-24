@@ -1,0 +1,54 @@
+.rail {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  border-top: 1px solid var(--line);
+}
+
+.item {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: var(--space-24) var(--space-24) 0 0;
+}
+
+.item + .item {
+  padding-left: var(--space-24);
+}
+
+.item + .item::before {
+  content: "";
+  position: absolute;
+  top: var(--space-24);
+  left: 0;
+  width: 1px;
+  height: 34px;
+  background: linear-gradient(to bottom, var(--line-strong), transparent);
+}
+
+.value {
+  color: var(--ink);
+  font-size: clamp(22px, 2.4vw, 30px);
+  font-weight: 500;
+  letter-spacing: var(--tracking-title);
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+}
+
+.label {
+  color: var(--ink-body);
+  font-family: var(--font-mono);
+  font-size: var(--text-micro);
+  letter-spacing: 0.06em;
+  line-height: 1.4;
+}
+
+@media (max-width: 560px) {
+  .item {
+    padding-right: var(--space-16);
+  }
+
+  .item + .item {
+    padding-left: var(--space-16);
+  }
+}

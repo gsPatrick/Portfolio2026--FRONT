@@ -1,0 +1,17 @@
+.kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-12);
+  color: var(--tone-faint);
+  font-family: var(--font-mono);
+  font-size: var(--text-micro);
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+}
+
+.rule {
+  display: block;
+  width: 28px;
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--tone-line-strong));
+}

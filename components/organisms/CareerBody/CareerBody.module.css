@@ -1,0 +1,462 @@
+.section {
+  position: relative;
+  padding: var(--section-y) 0;
+}
+
+.light {
+  --tone-ink: var(--black);
+  --tone-muted: var(--gray);
+  --tone-faint: rgba(10, 10, 10, 0.42);
+  --tone-line: rgba(10, 10, 10, 0.1);
+  --tone-line-strong: rgba(10, 10, 10, 0.18);
+  background-color: var(--white);
+  color: var(--black);
+}
+
+.dark {
+  background-color: var(--black);
+  color: var(--ink);
+}
+
+.dark::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: min(1100px, 90vw);
+  height: 1px;
+  transform: translateX(-50%);
+  background: linear-gradient(
+    to right,
+    transparent,
+    var(--line-strong),
+    transparent
+  );
+}
+
+.inner {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(40px, 5.5vw, 72px);
+  max-width: var(--page-max);
+  margin: 0 auto;
+  padding: 0 var(--page-x);
+}
+
+/* Timeline — LinkedIn style, cards invert on hover */
+.timeline {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(10px, 1.2vw, 14px);
+  list-style: none;
+}
+
+.company {
+  padding: clamp(24px, 2.8vw, 36px);
+  border: 1px solid var(--tone-line);
+  border-radius: clamp(18px, 2vw, 26px);
+  background-color: rgba(10, 10, 10, 0.02);
+  transition: background-color 450ms var(--ease-out),
+    border-color 450ms var(--ease-out), color 450ms var(--ease-out);
+}
+
+.company:hover {
+  background-color: var(--black);
+  border-color: var(--black);
+  color: var(--white);
+}
+
+.companyTop {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-16);
+  padding-bottom: clamp(18px, 2vw, 24px);
+  margin-bottom: clamp(4px, 1vw, 10px);
+}
+
+.logo {
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  border: 1px solid currentColor;
+  font-size: 20px;
+  font-weight: 600;
+  letter-spacing: -0.04em;
+  line-height: 1;
+  flex-shrink: 0;
+  opacity: 0.9;
+}
+
+.logoImg {
+  border-color: rgba(10, 10, 10, 0.12);
+  background-color: var(--white);
+  overflow: hidden;
+  padding: 0;
+}
+
+.logoImg img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.companyInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  padding-top: 2px;
+}
+
+.companyName {
+  font-size: clamp(19px, 2.2vw, 26px);
+  font-weight: 500;
+  letter-spacing: var(--tracking-title);
+  line-height: 1.1;
+  color: inherit;
+}
+
+.companySpan {
+  font-family: var(--font-mono);
+  font-size: var(--text-micro);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  opacity: 0.6;
+}
+
+.companyMode {
+  font-family: var(--font-mono);
+  font-size: var(--text-micro);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  opacity: 0.45;
+}
+
+.roles {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Nested (multi-role) — vertical connector line through dots */
+.nested {
+  position: relative;
+  margin-left: 23px;
+  padding-left: 33px;
+}
+
+.nested::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 6px;
+  bottom: 14px;
+  width: 1px;
+  background-color: currentColor;
+  opacity: 0.22;
+}
+
+.role {
+  position: relative;
+  padding: clamp(8px, 1.4vw, 14px) 0;
+}
+
+.roleDot {
+  position: absolute;
+  left: -37px;
+  top: calc(clamp(8px, 1.4vw, 14px) + 6px);
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background-color: var(--tone-ink, currentColor);
+  box-shadow: 0 0 0 4px var(--white);
+}
+
+.company:hover .roleDot {
+  box-shadow: 0 0 0 4px var(--black);
+  background-color: var(--white);
+}
+
+.roleBody {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.roleTitle {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  font-size: clamp(17px, 1.9vw, 22px);
+  font-weight: 500;
+  letter-spacing: var(--tracking-body);
+  color: inherit;
+}
+
+.rolePeriod {
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  font-variant-numeric: tabular-nums;
+  opacity: 0.6;
+}
+
+.roleTag {
+  padding: 4px 10px;
+  border-radius: var(--radius-pill);
+  background-color: var(--signal-dim);
+  color: var(--signal);
+  font-family: var(--font-mono);
+  font-size: var(--text-micro);
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.roleText {
+  max-width: 62ch;
+  margin-top: 6px;
+  font-size: var(--text-body);
+  line-height: 1.6;
+  opacity: 0.72;
+  text-wrap: pretty;
+}
+
+/* Dark section: formação + stack, stacked */
+.block {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(32px, 4vw, 52px);
+}
+
+/* Formação — LinkedIn style: logo + content */
+.eduList {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(14px, 1.6vw, 20px);
+  list-style: none;
+}
+
+.edu {
+  display: flex;
+  gap: var(--space-16);
+  padding: clamp(24px, 2.6vw, 34px);
+  border: 1px solid var(--line);
+  border-radius: clamp(18px, 2vw, 24px);
+  background: linear-gradient(
+    160deg,
+    rgba(255, 255, 255, 0.05),
+    rgba(255, 255, 255, 0.015) 60%
+  );
+}
+
+.eduLogo {
+  width: 52px;
+  height: 52px;
+  border-radius: 12px;
+  flex-shrink: 0;
+}
+
+.eduLogoImg {
+  overflow: hidden;
+  border: 1px solid var(--line);
+  background-color: var(--white);
+}
+
+.eduLogoImg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.eduBody {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.eduHead {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--space-12);
+}
+
+.eduSchool {
+  font-size: clamp(18px, 2vw, 24px);
+  font-weight: 500;
+  line-height: 1.15;
+  letter-spacing: var(--tracking-title);
+  color: var(--ink);
+  text-wrap: pretty;
+}
+
+.eduBadge {
+  flex-shrink: 0;
+  padding: 5px 11px;
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius-pill);
+  color: var(--ink-muted);
+  font-family: var(--font-mono);
+  font-size: var(--text-micro);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+}
+
+.eduActive {
+  border-color: transparent;
+  background-color: var(--signal-dim);
+  color: var(--signal);
+}
+
+.eduCourse {
+  color: var(--ink-body);
+  font-size: var(--text-body);
+  line-height: 1.35;
+  text-wrap: pretty;
+}
+
+.eduPeriod {
+  color: var(--ink-faint);
+  font-family: var(--font-mono);
+  font-size: var(--text-micro);
+}
+
+.eduLearned {
+  max-width: 52ch;
+  margin-top: var(--space-12);
+  color: var(--ink-muted);
+  font-size: var(--text-sm);
+  line-height: 1.55;
+  text-wrap: pretty;
+}
+
+.eduTopics {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  margin-top: auto;
+  padding-top: var(--space-16);
+  color: var(--ink-body);
+  font-size: var(--text-sm);
+  font-weight: 500;
+  line-height: 1.4;
+  text-wrap: pretty;
+}
+
+.eduGem {
+  display: inline-flex;
+  margin-top: 2px;
+  color: var(--ink-muted);
+  flex-shrink: 0;
+}
+
+/* Stack — rows: label | tags */
+.skills {
+  list-style: none;
+  border-top: 1px solid var(--line);
+}
+
+.skillRow {
+  display: grid;
+  grid-template-columns: 160px minmax(0, 1fr);
+  align-items: center;
+  gap: clamp(16px, 3vw, 48px);
+  padding: clamp(16px, 1.8vw, 22px) 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.skillLabel {
+  color: var(--ink-faint);
+  font-family: var(--font-mono);
+  font-size: var(--text-micro);
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+}
+
+.skillTags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  color: var(--ink);
+}
+
+/* Produtos / SaaS (light) */
+.highlights {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(14px, 1.6vw, 20px);
+}
+
+.highlight {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-12);
+  padding: clamp(24px, 2.6vw, 34px);
+  border: 1px solid var(--tone-line);
+  border-radius: clamp(18px, 2vw, 24px);
+  background-color: rgba(10, 10, 10, 0.02);
+  color: var(--tone-ink);
+  transition: background-color 450ms var(--ease-out),
+    border-color 450ms var(--ease-out), color 450ms var(--ease-out);
+}
+
+.highlight:hover {
+  background-color: var(--black);
+  border-color: var(--black);
+  color: var(--white);
+}
+
+.highlightMeta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-12);
+  font-family: var(--font-mono);
+  font-size: var(--text-micro);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  opacity: 0.6;
+}
+
+.highlightTitle {
+  font-size: clamp(20px, 2.2vw, 28px);
+  font-weight: 500;
+  line-height: 1.1;
+  letter-spacing: var(--tracking-title);
+  color: inherit;
+}
+
+.highlightText {
+  color: inherit;
+  font-size: var(--text-sm);
+  line-height: 1.55;
+  opacity: 0.72;
+  text-wrap: pretty;
+}
+
+.highlightTools {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: auto;
+  padding-top: var(--space-8);
+}
+
+@media (max-width: 860px) {
+  .role {
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--space-8);
+  }
+
+  .eduList,
+  .highlights {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .skillRow {
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--space-12);
+  }
+}

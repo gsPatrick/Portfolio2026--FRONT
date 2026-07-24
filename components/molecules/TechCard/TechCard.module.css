@@ -1,0 +1,71 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-16);
+  padding: clamp(24px, 2.8vw, 36px);
+  border: 1px solid var(--tone-line);
+  border-radius: clamp(18px, 2vw, 24px);
+  background-color: rgba(10, 10, 10, 0.015);
+  transition: border-color var(--dur-base) var(--ease-out),
+    background-color var(--dur-base) var(--ease-out),
+    transform var(--dur-base) var(--ease-out);
+}
+
+.card:hover {
+  border-color: var(--tone-line-strong);
+  background-color: rgba(10, 10, 10, 0.035);
+  transform: translateY(-2px);
+}
+
+.head {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-12);
+}
+
+.index {
+  color: var(--tone-faint);
+  font-family: var(--font-mono);
+  font-size: var(--text-micro);
+  font-variant-numeric: tabular-nums;
+}
+
+.title {
+  font-size: clamp(19px, 2vw, 25px);
+  font-weight: 500;
+  line-height: 1.15;
+  letter-spacing: var(--tracking-title);
+  color: var(--tone-ink);
+  text-wrap: pretty;
+}
+
+.text {
+  max-width: 46ch;
+  color: var(--tone-muted);
+  font-size: var(--text-body);
+  line-height: 1.55;
+  text-wrap: pretty;
+}
+
+.foot {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: auto;
+  padding-top: var(--space-24);
+  border-top: 1px solid var(--tone-line);
+}
+
+.footLabel {
+  color: var(--tone-faint);
+  font-family: var(--font-mono);
+  font-size: var(--text-micro);
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+}
+
+.tools {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}

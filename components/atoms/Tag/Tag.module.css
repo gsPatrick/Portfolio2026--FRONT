@@ -1,0 +1,15 @@
+.tag {
+  display: inline-flex;
+  align-items: center;
+  height: 30px;
+  padding: 0 13px;
+  border: 1px solid currentColor;
+  border-radius: var(--radius-pill);
+  color: inherit;
+  font-family: var(--font-mono);
+  font-size: var(--text-micro);
+  letter-spacing: 0.01em;
+  white-space: nowrap;
+  opacity: 0.5;
+  transition: opacity var(--dur-base) var(--ease-out);
+}

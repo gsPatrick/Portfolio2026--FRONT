@@ -1,0 +1,178 @@
+:root {
+  --white: #ffffff;
+  --black: #0a0a0a;
+  --gray: #525252;
+
+  --surface-0: #050505;
+  --surface-1: #0f0f0f;
+  --surface-2: #161616;
+
+  --ink: #ffffff;
+  --ink-body: #d4d4d4;
+  --ink-muted: #8a8a8a;
+  --ink-faint: #525252;
+
+  --line: rgba(255, 255, 255, 0.08);
+  --line-strong: rgba(255, 255, 255, 0.14);
+  --line-focus: rgba(255, 255, 255, 0.4);
+
+  --signal: #22c55e;
+  --signal-dim: rgba(34, 197, 94, 0.14);
+
+  --tone-ink: var(--ink);
+  --tone-body: var(--ink-body);
+  --tone-muted: var(--ink-muted);
+  --tone-faint: var(--ink-faint);
+  --tone-line: var(--line);
+  --tone-line-strong: var(--line-strong);
+
+  --font-sans: var(--font-inter), system-ui, -apple-system, sans-serif;
+  --font-serif: var(--font-instrument), Georgia, serif;
+  --font-mono: var(--font-jetbrains), ui-monospace, monospace;
+
+  --text-display: clamp(46px, 9vw, 132px);
+  --text-h2: clamp(32px, 5vw, 64px);
+  --text-h3: clamp(20px, 2.2vw, 28px);
+  --text-lead: clamp(16px, 1.4vw, 19px);
+  --text-body: 16px;
+  --text-sm: 14px;
+  --text-micro: 12px;
+
+  --tracking-display: -0.045em;
+  --tracking-title: -0.03em;
+  --tracking-body: -0.011em;
+  --tracking-label: 0.12em;
+
+  --space-4: 4px;
+  --space-8: 8px;
+  --space-12: 12px;
+  --space-16: 16px;
+  --space-24: 24px;
+  --space-32: 32px;
+  --space-48: 48px;
+  --space-64: 64px;
+  --space-96: 96px;
+  --section-y: clamp(96px, 13vw, 200px);
+
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 24px;
+  --radius-pill: 999px;
+
+  --page-max: 1240px;
+  --page-x: clamp(20px, 4vw, 48px);
+  --nav-h: 72px;
+  --footer-reveal: clamp(230px, 34.5vh, 368px);
+
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-inout: cubic-bezier(0.65, 0, 0.35, 1);
+  --dur-fast: 180ms;
+  --dur-base: 320ms;
+  --dur-slow: 700ms;
+
+  --shadow-lift: 0 1px 1px rgba(0, 0, 0, 0.4), 0 12px 40px rgba(0, 0, 0, 0.55);
+  --shadow-glow: 0 0 0 1px rgba(255, 255, 255, 0.1),
+    0 20px 60px rgba(255, 255, 255, 0.06);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  overflow-x: clip;
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background-color: var(--black);
+  color: var(--ink-body);
+  font-family: var(--font-sans);
+  font-size: var(--text-body);
+  line-height: 1.6;
+  letter-spacing: var(--tracking-body);
+  overflow-x: clip;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  color: var(--ink);
+  font-weight: 500;
+  line-height: 1.05;
+  text-wrap: balance;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font: inherit;
+  color: inherit;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+img,
+svg,
+video {
+  display: block;
+  max-width: 100%;
+}
+
+/* Vídeos de fundo: sem controles, sem interação. Esconde o botão de
+   play que o Safari injeta e trata o vídeo como elemento decorativo. */
+video[aria-hidden="true"] {
+  pointer-events: none;
+}
+
+video::-webkit-media-controls,
+video::-webkit-media-controls-enclosure,
+video::-webkit-media-controls-panel,
+video::-webkit-media-controls-panel-container,
+video::-webkit-media-controls-play-button,
+video::-webkit-media-controls-start-playback-button,
+video::-webkit-media-controls-overlay-play-button,
+video::-internal-media-controls-overlay-cast-button {
+  display: none !important;
+  -webkit-appearance: none !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+
+::selection {
+  background: var(--white);
+  color: var(--black);
+}
+
+:focus-visible {
+  outline: 2px solid var(--line-focus);
+  outline-offset: 3px;
+  border-radius: var(--radius-sm);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

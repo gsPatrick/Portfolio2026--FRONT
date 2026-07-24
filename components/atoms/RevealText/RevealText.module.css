@@ -1,0 +1,84 @@
+.reveal {
+  display: flex;
+  flex-direction: column;
+}
+
+.line {
+  display: block;
+}
+
+.word {
+  display: inline-block;
+  opacity: 0;
+  filter: blur(10px);
+  transform: translateY(0.22em);
+  transition: opacity var(--dur-slow) var(--ease-out),
+    filter var(--dur-slow) var(--ease-out),
+    transform var(--dur-slow) var(--ease-out);
+}
+
+.on .word {
+  opacity: 1;
+  filter: blur(0);
+  transform: translateY(0);
+}
+
+.accent {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 400;
+  letter-spacing: -0.02em;
+}
+
+.line:nth-child(1) span:nth-child(1) .word {
+  transition-delay: 40ms;
+}
+.line:nth-child(1) span:nth-child(2) .word {
+  transition-delay: 110ms;
+}
+.line:nth-child(1) span:nth-child(3) .word {
+  transition-delay: 180ms;
+}
+.line:nth-child(1) span:nth-child(4) .word {
+  transition-delay: 250ms;
+}
+.line:nth-child(1) span:nth-child(5) .word {
+  transition-delay: 320ms;
+}
+.line:nth-child(1) span:nth-child(6) .word {
+  transition-delay: 390ms;
+}
+.line:nth-child(1) span:nth-child(n + 7) .word {
+  transition-delay: 460ms;
+}
+
+.line:nth-child(2) span:nth-child(1) .word {
+  transition-delay: 320ms;
+}
+.line:nth-child(2) span:nth-child(2) .word {
+  transition-delay: 390ms;
+}
+.line:nth-child(2) span:nth-child(3) .word {
+  transition-delay: 460ms;
+}
+.line:nth-child(2) span:nth-child(4) .word {
+  transition-delay: 530ms;
+}
+.line:nth-child(2) span:nth-child(5) .word {
+  transition-delay: 600ms;
+}
+.line:nth-child(2) span:nth-child(n + 6) .word {
+  transition-delay: 670ms;
+}
+
+.line:nth-child(n + 3) span .word {
+  transition-delay: 700ms;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .word {
+    filter: none;
+    transform: none;
+    opacity: 1;
+  }
+}
